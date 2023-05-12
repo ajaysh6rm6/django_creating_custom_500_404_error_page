@@ -1,0 +1,43 @@
+INCLUDE INTO ROOT DIRECTORY>>>>>>>>>>>>>
+
+setting.py>>
+
+###errorHandling###
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
+###errorHandling###
+
+urls.py>>
+
+###errorHandling###
+handler404 = 'diginxthltadmin.views.custom_page_not_found_view'
+handler500 = 'diginxthltadmin.views.custom_error_view'
+handler403 = 'diginxthltadmin.views.custom_permission_denied_view'
+handler400 = 'diginxthltadmin.views.custom_bad_request_view'
+###errorHandling###
+
+###INCLUDE INTO YOUR APPS>>>>>>>>>>>>>
+
+views.py>>
+
+###errorHandling###
+def custom_page_not_found_view(request, exception):
+    return render(request, "errors/404.html", {})
+
+def custom_error_view(request, exception=None):
+    return render(request, "errors/500.html", {})
+
+def custom_permission_denied_view(request, exception=None):
+    return render(request, "errors/403.html", {})
+
+def custom_bad_request_view(request, exception=None):
+    return render(request, "errors/400.html", {})
+###errorHandling###  
+
+templates folder>>
+
+errors/404.html
+errors/500.html
+errors/403.html
+errors/400.html
+
